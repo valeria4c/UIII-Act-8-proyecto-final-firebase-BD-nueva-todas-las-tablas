@@ -1,0 +1,54 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Vuelos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Vuelos</h1>
+        <a href="{% url 'agregar_vuelo' %}" class="btn btn-success btn-lg">+ Agregar Vuelo</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Aerolínea</th>
+                            <th>Origen</th>
+                            <th>Destino</th>
+                            <th>Fecha Salida</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vuelo in vuelos %}
+                        <tr>
+                            <td>{{ vuelo.id_vuelo }}</td>
+                            <td>{{ vuelo.aerolinea }}</td>
+                            <td>{{ vuelo.origen }}</td>
+                            <td>{{ vuelo.destino }}</td>
+                            <td>{{ vuelo.fecha_salida }}</td>
+                            <td>${{ vuelo.precio_clase_economica }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'actualizar_vuelo' vuelo.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_vuelo' vuelo.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">No hay vuelos registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

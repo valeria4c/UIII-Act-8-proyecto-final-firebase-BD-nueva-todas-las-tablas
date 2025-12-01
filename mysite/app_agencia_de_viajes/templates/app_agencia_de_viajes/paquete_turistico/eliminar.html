@@ -1,0 +1,12 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Eliminar Paquete Turístico{% endblock %}
+
+{% block content %}
+    <h2>¿Estás seguro de que quieres eliminar "{{ paquete_turistico.nombre }}"?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'ver_paquetes_turisticos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

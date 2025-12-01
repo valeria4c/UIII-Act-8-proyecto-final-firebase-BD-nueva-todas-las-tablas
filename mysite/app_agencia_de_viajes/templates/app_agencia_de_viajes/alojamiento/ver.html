@@ -1,0 +1,52 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Alojamientos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Alojamientos</h1>
+        <a href="{% url 'agregar_alojamiento' %}" class="btn btn-success btn-lg">+ Agregar Alojamiento</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Ubicación</th>
+                            <th>Tipo</th>
+                            <th>Precio por Noche</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for alojamiento in alojamientos %}
+                        <tr>
+                            <td>{{ alojamiento.id_alojamiento }}</td>
+                            <td>{{ alojamiento.nombre_hotel }}</td>
+                            <td>{{ alojamiento.ciudad }}, {{ alojamiento.pais }}</td>
+                            <td>{{ alojamiento.tipo_alojamiento }}</td>
+                            <td>${{ alojamiento.precio_noche_estandar }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'actualizar_alojamiento' alojamiento.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_alojamiento' alojamiento.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">No hay alojamientos registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

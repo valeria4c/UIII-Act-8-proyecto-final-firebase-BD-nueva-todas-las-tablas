@@ -1,0 +1,60 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Agentes de Viajes{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Agentes de Viajes</h1>
+        <a href="{% url 'agregar_agente' %}" class="btn btn-success btn-lg">+ Agregar Agente</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Teléfono</th>
+                            <th>DNI</th>
+                            <th>Fecha de Contratación</th>
+                            <th>Salario Base</th>
+                            <th>Comisión (%)</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for agente in agentes %}
+                        <tr>
+                            <td>{{ agente.id_agente }}</td>
+                            <td>{{ agente.nombre }}</td>
+                            <td>{{ agente.apellido }}</td>
+                            <td>{{ agente.email }}</td>
+                            <td>{{ agente.telefono }}</td>
+                            <td>{{ agente.dni }}</td>
+                            <td>{{ agente.fecha_contratacion }}</td>
+                            <td>{{ agente.salario_base }}</td>
+                            <td>{{ agente.comision_porcentaje }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'actualizar_agente' agente.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_agente' agente.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="10" class="text-center text-muted">No hay agentes registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

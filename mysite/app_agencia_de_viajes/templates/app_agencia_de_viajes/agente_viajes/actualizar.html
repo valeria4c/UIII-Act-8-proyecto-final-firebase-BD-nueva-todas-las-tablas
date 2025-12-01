@@ -1,0 +1,60 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Actualizar Agente{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="my-3">Actualizar Agente</h3>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="id_nombre" class="form-label">Nombre</label>
+                            {{ form.nombre }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_apellido" class="form-label">Apellido</label>
+                            {{ form.apellido }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_email" class="form-label">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_telefono" class="form-label">Teléfono</label>
+                            {{ form.telefono }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_dni" class="form-label">DNI</label>
+                            {{ form.dni }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_fecha_contratacion" class="form-label">Fecha de Contratación</label>
+                            {{ form.fecha_contratacion }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="id_salario_base" class="form-label">Salario Base</label>
+                                {{ form.salario_base }}
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="id_comision_porcentaje" class="form-label">Comisión (%)</label>
+                                {{ form.comision_porcentaje }}
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary btn-lg">Actualizar Agente</button>
+                            <a href="{% url 'ver_agentes' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Bienvenido a la Agencia de Viajes{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center py-5 mb-4 rounded-3">
+    <h1 class="display-3 fw-bold">Tu Aventura Comienza Aquí</h1>
+    <p class="lead fs-4">Explora destinos increíbles, encuentra vuelos perfectos y reserva el alojamiento de tus sueños.</p>
+    <a class="btn btn-primary btn-lg mt-3" href="{% url 'ver_paquetes_turisticos' %}" role="button">Ver Paquetes Turísticos</a>
+</div>
+
+<div class="row text-center">
+    <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h2 class="card-title">Destinos Exóticos</h2>
+                <p class="card-text">Descubre lugares únicos y fascinantes en todos los continentes. Prepara tu pasaporte para una experiencia inolvidable.</p>
+                <a href="{% url 'ver_destinos' %}" class="btn btn-outline-primary">Explorar Destinos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h2 class="card-title">Vuelos a tu Medida</h2>
+                <p class="card-text">Compara y encuentra las mejores ofertas en vuelos. Viaja con comodidad y al mejor precio a cualquier parte del mundo.</p>
+                <a href="{% url 'ver_vuelos' %}" class="btn btn-outline-primary">Buscar Vuelos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0">
+            <div class="card-body">
+                <h2 class="card-title">Alojamientos de Ensueño</h2>
+                <p class="card-text">Desde hoteles de lujo hasta acogedores hostales. Tenemos el lugar perfecto para que descanses y disfrutes tu viaje.</p>
+                <a href="{% url 'ver_alojamientos' %}" class="btn btn-outline-primary">Ver Alojamientos</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Agregar Agente de Viajes{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-success text-white text-center">
+                    <h3 class="my-3">Agregar Nuevo Agente de Viajes</h3>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">{{ form.nombre.label_tag }} {{ form.nombre }}</div>
+                        <div class="mb-3">{{ form.apellido.label_tag }} {{ form.apellido }}</div>
+                        <div class="mb-3">{{ form.email.label_tag }} {{ form.email }}</div>
+                        <div class="mb-3">{{ form.telefono.label_tag }} {{ form.telefono }}</div>
+                        <div class="mb-3">{{ form.dni.label_tag }} {{ form.dni }}</div>
+                        <div class="mb-3">{{ form.fecha_contratacion.label_tag }} {{ form.fecha_contratacion }}</div>
+                        <div class="mb-3">{{ form.salario_base.label_tag }} {{ form.salario_base }}</div>
+                        <div class="mb-3">{{ form.comision_porcentaje.label_tag }} {{ form.comision_porcentaje }}</div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-success btn-lg">Guardar Agente</button>
+                            <a href="{% url 'ver_agentes' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Eliminar Alojamiento{% endblock %}
+
+{% block content %}
+    <h2>Eliminar Alojamiento</h2>
+    <p>¿Estás seguro de que deseas eliminar el alojamiento <strong>{{ alojamiento.nombre }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'ver_alojamientos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

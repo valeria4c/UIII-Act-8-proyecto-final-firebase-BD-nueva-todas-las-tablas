@@ -1,0 +1,33 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Actualizar Cliente{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="my-3">Actualizar Cliente</h3>
+                </div>
+                <div class="card-body p-5">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">{{ form.nombre.label_tag }} {{ form.nombre }}</div>
+                        <div class="mb-3">{{ form.apellido.label_tag }} {{ form.apellido }}</div>
+                        <div class="mb-3">{{ form.email.label_tag }} {{ form.email }}</div>
+                        <div class="mb-3">{{ form.telefono.label_tag }} {{ form.telefono }}</div>
+                        <div class="mb-3">{{ form.direccion.label_tag }} {{ form.direccion }}</div>
+                        <div class="mb-3">{{ form.preferencias_viaje.label_tag }} {{ form.preferencias_viaje }}</div>
+                        <div class="mb-3">{{ form.pasaporte.label_tag }} {{ form.pasaporte }}</div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary btn-lg">Actualizar Cliente</button>
+                            <a href="{% url 'ver_clientes' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

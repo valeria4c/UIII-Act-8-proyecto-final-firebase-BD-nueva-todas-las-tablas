@@ -1,0 +1,64 @@
+{% extends 'app_agencia_de_viajes/base.html' %}
+
+{% block title %}Paquetes Turísticos{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4">Paquetes Turísticos</h1>
+        <a href="{% url 'agregar_paquete_turistico' %}" class="btn btn-success btn-lg">+ Agregar Paquete</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Destino</th>
+                            <th>Precio Adulto</th>
+                            <th>Precio Niño</th>
+                            <th>Cupo Máximo</th>
+                            <th>Incluye Vuelo</th>
+                            <th>Incluye Alojamiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for paquete in paquetes %}
+                        <tr>
+                            <td>{{ paquete.id_paquete }}</td>
+                            <td>{{ paquete.nombre_paquete }}</td>
+                            <td>{{ paquete.descripcion }}</td>
+                            <td>{{ paquete.fecha_inicio }}</td>
+                            <td>{{ paquete.fecha_fin }}</td>
+                            <td>{{ paquete.id_destino.nombre_destino }}</td>
+                            <td>{{ paquete.precio_adulto }}</td>
+                            <td>{{ paquete.precio_nino }}</td>
+                            <td>{{ paquete.cupo_maximo }}</td>
+                            <td>{% if paquete.incluye_vuelo %}Sí{% else %}No{% endif %}</td>
+                            <td>{% if paquete.incluye_alojamiento %}Sí{% else %}No{% endif %}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'actualizar_paquete_turistico' paquete.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                                    <a href="{% url 'eliminar_paquete_turistico' paquete.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="12" class="text-center text-muted">No hay paquetes registrados.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

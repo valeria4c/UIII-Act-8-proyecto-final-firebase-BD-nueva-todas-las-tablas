@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agencia de Viajes{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .jumbotron {
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">✈️ Agencia de Viajes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownDestinos" role="button" data-bs-toggle="dropdown" aria-expanded="false">Destinos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownDestinos">
+                            <li><a class="dropdown-item" href="{% url 'ver_destinos' %}">Ver Destinos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_destino' %}">Agregar Destino</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPaquetes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Paquetes Turísticos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownPaquetes">
+                            <li><a class="dropdown-item" href="{% url 'ver_paquetes_turisticos' %}">Ver Paquetes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_paquete_turistico' %}">Agregar Paquete</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVuelos" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vuelos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownVuelos">
+                            <li><a class="dropdown-item" href="{% url 'ver_vuelos' %}">Ver Vuelos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_vuelo' %}">Agregar Vuelo</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAlojamientos" role="button" data-bs-toggle="dropdown" aria-expanded="false">Alojamientos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAlojamientos">
+                            <li><a class="dropdown-item" href="{% url 'ver_alojamientos' %}">Ver Alojamientos</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_alojamiento' %}">Agregar Alojamiento</a></li>
+                        </ul>
+                    </li>
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAgentes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Agentes de Viaje</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownAgentes">
+                            <li><a class="dropdown-item" href="{% url 'ver_agentes' %}">Ver Agentes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_agente' %}">Agregar Agente</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownClientes" role="button" data-bs-toggle="dropdown" aria-expanded="false">Clientes</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownClientes">
+                            <li><a class="dropdown-item" href="{% url 'ver_clientes' %}">Ver Clientes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReservas" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reservas</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownReservas">
+                            <li><a class="dropdown-item" href="{% url 'ver_reservas' %}">Ver Reservas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'agregar_reserva' %}">Agregar Reserva</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+        <div class="container mt-4">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <span>© 2024 Agencia de Viajes. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
